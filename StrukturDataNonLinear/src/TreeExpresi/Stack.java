@@ -13,15 +13,5 @@ import java.util.LinkedList;
 public class Stack {
     LinkedList<TreeNode> tumpukan;
 
-    public Stack() {
-        tumpukan = new LinkedList<>();
-    }
     
-    public void push(TreeNode x){
-        tumpukan.addFirst(x);
-    }
-    
-    public TreeNode pop(){
-        return tumpukan.removeFirst();
-    }
 }
