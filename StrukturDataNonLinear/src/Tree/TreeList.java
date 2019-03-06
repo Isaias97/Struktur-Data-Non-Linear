@@ -57,14 +57,6 @@ public class TreeList {
             }        
         }
     }
-    
-    public TreeNode getRoot() {
-        return root;
-    }
-
-    public void setRoot(TreeNode root) {
-        this.root = root;
-    }
         
     private void preOrder(TreeNode localRoot){
         // apakah localRoot != null
