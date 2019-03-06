@@ -11,24 +11,15 @@ package Tree;
  */
 public class TreeNode {
     private int element;
-    private TreeNode rightChild;
-    private TreeNode leftChild;
-    private TreeNode parent;
-    private char data;
+    TreeNode rightChild;
+    TreeNode leftChild;
 
     public TreeNode() {
     }
 
-    public TreeNode(int element, TreeNode parent) {
+    public TreeNode(int element) {
         this.element = element;
-         leftChild = rightChild = null;
-        this.parent = parent;
-    }
-
-    public TreeNode(TreeNode parent, char data) {
-        this.parent = parent;
         leftChild = rightChild = null;
-        this.data = data;
     }
 
     public int getElement() {
@@ -53,21 +44,5 @@ public class TreeNode {
 
     public void setLeftChild(TreeNode leftChild) {
         this.leftChild = leftChild;
-    }
-
-    public TreeNode getParent() {
-        return parent;
-    }
-
-    public void setParent(TreeNode parent) {
-        this.parent = parent;
-    }
-
-    public char getData() {
-        return data;
-    }
-
-    public void setData(char data) {
-        this.data = data;
     }
 }
