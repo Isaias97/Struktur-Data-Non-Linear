@@ -10,7 +10,7 @@ package Tree;
  * @author Aureli Isaias
  */
 public class TreeNode {
-    private int element;
+    int element;
     TreeNode rightChild;
     TreeNode leftChild;
 
@@ -20,6 +20,22 @@ public class TreeNode {
     public TreeNode(int element) {
         this.element = element;
         leftChild = rightChild = null;
+    }
+    
+    public void insert(int x){
+         if (x < element) {
+            if (leftChild == null) {
+                leftChild = new TreeNode(x);
+            } else {
+                leftChild.insert(x);
+            }
+        } else {
+            if (rightChild == null) {
+                rightChild = new TreeNode(x);
+            } else {
+                rightChild.insert(x);
+            }
+        }
     }
 
     public int getElement() {

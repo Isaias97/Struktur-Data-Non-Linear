@@ -4,16 +4,21 @@
  * and open the template in the editor.
  */
 package Tree;
-
+import Tree.TreeNode;
 /**
  *
  * @author Aureli Isaias
  */
 public class TreeList {
-    private TreeNode root;
+     TreeNode root;
 
     public TreeList() {
         root = null;
+    }
+    
+    public TreeNode getRoot() {
+        // mengembalikan nilai root
+        return root;
     }
     
     public void add(int x){
@@ -61,7 +66,49 @@ public class TreeList {
             }        
         }
     }
-        
+    
+    public void addR(int x){
+        if(isEmpty()){
+            root = new TreeNode(x);
+        }else{
+            root.insert(x);
+        }
+    }
+    
+
+    public boolean isEmpty(){
+        if(root == null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public TreeNode getNode(int x){
+        // TreeNode bantu menunjuk ke root
+        TreeNode bantu = getRoot();
+        // selama bantu tidak null
+        while (bantu != null) {   
+            // jika ya, cek element = x
+            if (bantu.getElement() == x) {
+                // jika ya, return bantu
+                return bantu;
+            }
+            // jika tidak, cek x < element 
+            else if (x < bantu.getElement()) {
+                // jika ya, bantu berpindah ke leftChild
+                bantu = bantu.leftChild;
+            }
+            else {
+                // jika tidak, bantu berpindah ke rightChild
+                bantu = bantu.rightChild;
+            }
+        }
+        // jika tidak ketemu, return null
+        return null;
+    }
+    
+    
+    
     private void preOrder(TreeNode localRoot){
         // apakah localRoot != null
         if (localRoot!= null) {
