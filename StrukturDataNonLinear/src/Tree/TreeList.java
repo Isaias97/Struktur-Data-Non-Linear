@@ -81,15 +81,27 @@ public class TreeList {
         System.out.println("");
     }
     
+    public void inOrderHelper(){
+        System.out.print("In Order : ");
+        inOrder(root);
+        System.out.println("");
+    }
+    
+    public void postOrderHelper(){
+        System.out.print("Post Order : ");
+        postOrder(root);
+        System.out.println("");
+    }
+    
     private void inOrder(TreeNode localRoot){
         // apakah localRoot != null
         if (localRoot != null) {
             // masukan localRoot.leftChild ke method preOrder
-
+            inOrder(localRoot.leftChild);
             // cetak localRoot.getElement
-           
+            System.out.print(localRoot.getElement() + " ");
             // masukan localRoot.rightChild ke method preOrder
-            
+            inOrder(localRoot.rightChild);
         }
     }
     
@@ -97,11 +109,11 @@ public class TreeList {
         // apakah localRoot != null
         if (localRoot != null) {
             // masukan localRoot.leftChild ke method preOrder
-            
+            postOrder(localRoot.leftChild);
             // masukan localRoot.rightChild ke method preOrder
-            
+            postOrder(localRoot.rightChild);
             // cetak localRoot.getElement
-            
+            System.out.print(localRoot.getElement() + " ");
         }
     }
 }
