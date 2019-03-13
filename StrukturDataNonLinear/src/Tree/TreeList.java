@@ -20,38 +20,42 @@ public class TreeList {
         // apakah root null 
         if (root == null) {
             // ya, root new TreeNode(x)
-            
+            root = new TreeNode(x);
         }
         // tidak
         else {
             //bantu = root
-            
+            TreeNode bantu = root;
             //selama bantu != null 
-            while (true) {                
+            while (bantu != null) {                
                 // apakah x kurang dari bantu
-                if (true) {
+                if (x < bantu.getElement()) {
                     // ya, apakah bantu.leftChild  == null
-                    if (true) {
+                    if (bantu.leftChild == null) {
                         // ya, bantu.leftChild = new TreeNode(x)
-                        
+                        bantu.leftChild = new TreeNode(x);
                         // bantu = null
+                        bantu = null;
                     }
                     // tidak 
                     else {
                         // bantu = bantu.leftChild;
+                        bantu = bantu.leftChild;
                     }
                 }
                 // tidak
                 else {
                     // apakah bantu.rightChild  == null
-                    if (true) {
+                    if (bantu.rightChild == null) {
                         // ya, bantu.rightChild = new TreeNode(x)
-                        
+                        bantu.rightChild = new TreeNode(x);
                         // bantu = null;
+                        bantu = null;
                     }
                     // tidak
                     else {
                         // bantu = bantu.rightChild;
+                        bantu = bantu.rightChild;
                     }
                 }
             }        
@@ -60,14 +64,21 @@ public class TreeList {
         
     private void preOrder(TreeNode localRoot){
         // apakah localRoot != null
-        if (true) {
+        if (localRoot!= null) {
             // cetak localRoot.getElement
-            
+            System.out.print(localRoot.getElement() + " ");
             // masukan localRoot.leftChild ke method preOrder
-            
+            preOrder(localRoot.leftChild);
             // masukan localRoot.rightChild ke method preOrder
+            preOrder(localRoot.rightChild);
             
         }
+    }
+    
+    public void preOrderHelper(){
+        System.out.print("Pre Order : ");
+        preOrder(root);
+        System.out.println("");
     }
     
     private void inOrder(TreeNode localRoot){
