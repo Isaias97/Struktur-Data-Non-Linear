@@ -69,4 +69,8 @@ public class TreeNode {
     public void setLeftChild(TreeNode leftChild) {
         this.leftChild = leftChild;
     }
+    
+    public boolean isLeaf(){
+        return ((leftChild == null) && (rightChild == null));
+    }
 }

@@ -30,5 +30,13 @@ public class MainTree {
         tl.addR(42);
         tl.inOrderHelper();
         
+        TreeNode delNode = tl.remove(45);
+        if (delNode != null) {
+            System.out.println("Data " + delNode.getElement() + " berhasil dihapus");
+        }
+        else {
+            System.out.println("Data tidak ada");
+        }
+        
     }
 }
