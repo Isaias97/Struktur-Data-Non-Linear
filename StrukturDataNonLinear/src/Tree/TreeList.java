@@ -26,7 +26,7 @@ public class TreeList {
         // apakah root null 
         if (root == null) {
             // ya, root new TreeNode(x)
-            root = new TreeNode(x);
+            root = new TreeNode(x, null);
         }
         // tidak
         else {
@@ -39,7 +39,7 @@ public class TreeList {
                     // ya, apakah bantu.leftChild  == null
                     if (bantu.leftChild == null) {
                         // ya, bantu.leftChild = new TreeNode(x)
-                        bantu.leftChild = new TreeNode(x);
+                        bantu.leftChild = new TreeNode(x, bantu);
                         // bantu = null
                         bantu = null;
                     }
@@ -54,7 +54,7 @@ public class TreeList {
                     // apakah bantu.rightChild  == null
                     if (bantu.rightChild == null) {
                         // ya, bantu.rightChild = new TreeNode(x)
-                        bantu.rightChild = new TreeNode(x);
+                        bantu.rightChild = new TreeNode(x, bantu);
                         // bantu = null;
                         bantu = null;
                     }
@@ -232,6 +232,70 @@ public class TreeList {
         return bantu; // kembalikan nilai bantu
     }
     
+    public TreeNode remove2(int x){ // hapus 0, 1, 2 
+        TreeNode bantu = getNode(x);
+        if (bantu == null) { // jika bantu adalah null atau bantu = null
+            return null;
+        } 
+        else { 
+            if (isRoot(bantu.getElement())) { // Jika bantu adalah root atau bantu = root
+                if (bantu.isLeaf()) { // Jika bantu adalah leaf atau bantu = leaf
+                    root = null;
+                }
+                else if (bantu.rightChild == null) { // jika hanya punya anak kiri
+                    root = bantu.leftChild;
+                }
+                else if (bantu.leftChild == null) { // jika hanya punya anak kanan
+                    root = bantu.rightChild;
+                }
+                else { // jika punya dua anak
+                    TreeNode prede = getPredecessor(bantu);
+                    TreeNode parentPrede = prede.getParent();
+                    bantu.element = prede.element;
+                    if (parentPrede != bantu) {
+                        if (prede.getLeftChild() != null) {
+                            parentPrede.rightChild = prede.leftChild;
+                        }
+                        else {
+                            parentPrede.rightChild = null;
+                        }
+                    }
+                    else {
+                        bantu.leftChild = prede.leftChild;
+                    }
+                }
+            }
+            else {
+                    if (bantu.isLeaf()) { // Jika bantu adalah leaf atau bantu = leaf
+                        bantu.getParent().leftChild = null;
+                    }
+                    else if (bantu.rightChild == null) { // jika hanya punya anak kiri
+                        bantu.getParent().leftChild = bantu.leftChild;
+                    }
+                    else if (bantu.leftChild == null) { // jika hanya punya anak kanan
+                        bantu.getParent().leftChild = bantu.rightChild;
+                    }
+                    else { // Jika bantu punya dua anak
+                    TreeNode prede = getPredecessor(bantu);
+                    TreeNode parentPrede = prede.getParent();
+                    bantu.element = prede.element;
+                    if (parentPrede != bantu) {
+                        if (prede.getLeftChild() != null) {
+                            parentPrede.rightChild = prede.leftChild;
+                        }
+                        else {
+                            parentPrede.rightChild = null;
+                        }
+                    }
+                    else {
+                        bantu.leftChild = prede.leftChild;
+                    }
+                }
+            }
+        }
+        return bantu; // kembalikan nilai bantu
+    }
+    
     public TreeNode getParent(int x){
         // TreeNode bantu menunjuk ke root
         TreeNode bantu = root;
@@ -261,5 +325,40 @@ public class TreeList {
         }
         // mengembalikan nilai null apabila hanya ada root
         return null;
+    }
+    
+    public TreeNode getPredecessor(TreeNode x){
+        TreeNode bantu = x; // menyimpan x ke bantu
+        if (bantu.leftChild == null) { // mengecek bantu.leftChild == null
+             return null; // mengembalikan nilai null
+        }
+        else {
+            bantu = bantu.leftChild; // memindahkan bantu ke bantu.leftChild
+            while (bantu.rightChild != null) { // looping selama bantu.rightChild tidak sama dengan null           
+                if (bantu.rightChild == null) { // mengecek bantu.rightChild == null
+                    return bantu; // mengembalikan nilai bantu
+                } else {
+                    bantu = bantu.rightChild; // memindahkan bantu ke bantu.rightChild
+                }
+            }
+        }
+        return bantu; // mengembalikan nilai bantu
+    }
+    
+    public TreeNode getSuccessor(TreeNode x) {
+        TreeNode bantu = x;
+        if (bantu.rightChild == null) {
+            return null;
+        } else {
+            bantu = bantu.rightChild;
+            while(bantu.leftChild != null) {
+                if (bantu.leftChild == null) {
+                    return bantu;
+                } else {
+                    bantu = bantu.leftChild;
+                }
+            }
+        }
+        return bantu;
     }
 }

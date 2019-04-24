@@ -13,6 +13,7 @@ public class TreeNode {
     int element;
     TreeNode rightChild;
     TreeNode leftChild;
+    TreeNode parent;
 
     public TreeNode() {
     }
@@ -20,6 +21,12 @@ public class TreeNode {
     public TreeNode(int element) {
         this.element = element;
         leftChild = rightChild = null;
+    }
+    
+    public TreeNode(int element, TreeNode parent) {
+        this.element = element;
+        leftChild = rightChild = null;
+        this.parent = parent;
     }
     
     public void insert(int x){
@@ -72,5 +79,17 @@ public class TreeNode {
     
     public boolean isLeaf(){
         return ((leftChild == null) && (rightChild == null));
+    }
+    
+    public boolean isRoot(){
+        return parent == null;
+    }
+    
+    public TreeNode getParent() {
+        return parent;
+    }
+
+    public void setParent(TreeNode parent) {
+        this.parent = parent;
     }
 }
