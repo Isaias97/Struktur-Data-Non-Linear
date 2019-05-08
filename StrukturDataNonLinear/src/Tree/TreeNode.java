@@ -35,7 +35,7 @@ public class TreeNode {
             // jika ya, cek leftChild == null
             if (leftChild == null) {
                 // jika ya, leftChild = new TreeNode(x)
-                leftChild = new TreeNode(x);
+                leftChild = new TreeNode(x, this);
             } else {
                 // jika tidak, leftChild.insert(x)
                 leftChild.insert(x);
@@ -45,7 +45,7 @@ public class TreeNode {
             // jika tidak, cek rightChild == null
             if (rightChild == null) {
                 // jika ya, rightChild.insert(x)
-                rightChild = new TreeNode(x);
+                rightChild = new TreeNode(x, this);
             } else {
                 // jika tidak, rightChild.insert(x)
                 rightChild.insert(x);

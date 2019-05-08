@@ -238,7 +238,7 @@ public class TreeList {
             return null;
         } 
         else { 
-            if (isRoot(bantu.getElement())) { // Jika bantu adalah root atau bantu = root
+            if (bantu.isRoot()) { // Jika bantu adalah root atau bantu = root
                 if (bantu.isLeaf()) { // Jika bantu adalah leaf atau bantu = leaf
                     root = null;
                 }
@@ -250,7 +250,7 @@ public class TreeList {
                 }
                 else { // jika punya dua anak
                     TreeNode prede = getPredecessor(bantu);
-                    TreeNode parentPrede = prede.getParent();
+                    TreeNode parentPrede = prede.parent;
                     bantu.element = prede.element;
                     if (parentPrede != bantu) {
                         if (prede.getLeftChild() != null) {
@@ -267,17 +267,17 @@ public class TreeList {
             }
             else {
                     if (bantu.isLeaf()) { // Jika bantu adalah leaf atau bantu = leaf
-                        bantu.getParent().leftChild = null;
+                        bantu.parent.leftChild = null;
                     }
                     else if (bantu.rightChild == null) { // jika hanya punya anak kiri
-                        bantu.getParent().leftChild = bantu.leftChild;
+                        bantu.parent.leftChild = bantu.leftChild;
                     }
                     else if (bantu.leftChild == null) { // jika hanya punya anak kanan
-                        bantu.getParent().leftChild = bantu.rightChild;
+                        bantu.parent.leftChild = bantu.rightChild;
                     }
                     else { // Jika bantu punya dua anak
                     TreeNode prede = getPredecessor(bantu);
-                    TreeNode parentPrede = prede.getParent();
+                    TreeNode parentPrede = prede.parent;
                     bantu.element = prede.element;
                     if (parentPrede != bantu) {
                         if (prede.getLeftChild() != null) {
