@@ -28,7 +28,7 @@ public class TreeList {
         // menyiapkan variable karakter bertipe char
         char karakter;
         
-        
+        // selama i < sepanjang data
         for (int i = 0; i < data.length(); i++) {
             karakter = data.charAt(i);
             if (karakter == '(' || karakter == '+' || karakter == '-'
