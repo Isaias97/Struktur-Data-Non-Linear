@@ -118,8 +118,13 @@ public class Graph02 {
     }
     
     public ArrayList<Edge> prim(){
+        // buat variable arraylist primEdge
         ArrayList primEdge = new ArrayList();
+        // buat variable arraylist integer primVertexs
         ArrayList<Integer> primVertexs = new ArrayList();
+        // buat variable int seed = 0
+//        int seed = 0;
+        // add seed ke primVertex
         primVertexs.add(3);
         vertexList[3].flagVisited = true;
         
@@ -140,6 +145,37 @@ public class Graph02 {
                 }
             }
             primVertexs.add(tempMinIndekVertexJ); 
+            vertexList[tempMinIndekVertexJ].flagVisited = true;
+            primEdge.add(new Edge(tempMinIndekVertexI, tempMinIndekVertexJ, termMinWeight));
+        }
+        return primEdge;
+    }
+    
+    public ArrayList<Edge> prim2(){
+        ArrayList primEdge = new ArrayList();
+        ArrayList<Integer> primVertex = new ArrayList<Integer>();
+        int seed = 0;
+        primVertex.add(seed);
+        vertexList[seed].flagVisited = true;
+        
+        while (primVertex.size() < countVertex) {            
+            int termMinWeight = Integer.MAX_VALUE;
+            int tempMinIndekVertexI = -1;
+            int tempMinIndekVertexJ = -1;
+            
+            for (int i = 0; i < primVertex.size(); i++) {
+                for (int j = 0; j < countVertex; j++) {
+                    if (adjacencyMatrik[primVertex.get(i)][j] > 0 &&
+                            vertexList[j].flagVisited == false &&
+                            adjacencyMatrik[primVertex.get(i)][j] < termMinWeight) {
+                        termMinWeight = adjacencyMatrik[primVertex.get(i)][j];
+                        tempMinIndekVertexI = i;
+                        tempMinIndekVertexJ = j;
+                    }
+                }
+                
+            }
+            primVertex.add(tempMinIndekVertexJ); 
             vertexList[tempMinIndekVertexJ].flagVisited = true;
             primEdge.add(new Edge(tempMinIndekVertexI, tempMinIndekVertexJ, termMinWeight));
         }

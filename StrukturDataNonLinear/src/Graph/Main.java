@@ -20,10 +20,10 @@ public class Main {
         graph.addVertex('C');
         graph.addVertex('D');
         graph.addVertex('E');
-//        graph.addVertex('F');
-//        graph.addVertex('G');
-//        graph.addVertex('H');
-//        graph.addVertex('I');
+        graph.addVertex('F');
+        graph.addVertex('G');
+        graph.addVertex('H');
+        graph.addVertex('I');
         
         graph.addEdge('A', 'B', 8);
         graph.addEdge('A', 'D', 3);
@@ -32,23 +32,23 @@ public class Main {
         graph.addEdge('B', 'C', 5);
         graph.addEdge('D', 'C', 4);
         graph.addEdge('C', 'E', 6);
-//        graph.addEdge('C', 'E', 6);
-//        graph.addEdge('D', 'E', 15);
-//        graph.addEdge('E', 'F', 8);
-//        graph.addEdge('E', 'G', 9);
-//        graph.addEdge('F', 'G', 11);
+        graph.addEdge('C', 'E', 6);
+        graph.addEdge('D', 'E', 15);
+        graph.addEdge('E', 'F', 8);
+        graph.addEdge('E', 'G', 9);
+        graph.addEdge('F', 'G', 11);
         
-//        ArrayList<Edge> hasil = graph.prim();
-//        int sum = 0;
-//        
-//        for (int i = 0; i < hasil.size(); i++) {
-//            System.out.println(hasil.get(i));
-//            sum = sum + hasil.get(i).getWeight();
-//        }
+        ArrayList<Edge> hasil = graph.prim();
+        int sum = 0;
         
-//        System.out.println("Total = " + sum);
-//        graph.addEdge('E', 'G', 80);
-//        graph.addEdge('G', 'D', 80);
+        for (int i = 0; i < hasil.size(); i++) {
+            System.out.println(hasil.get(i));
+            sum = sum + hasil.get(i).getWeight();
+        }
+        
+        System.out.println("Total = " + sum);
+        graph.addEdge('E', 'G', 80);
+        graph.addEdge('G', 'D', 80);
 
         graph.printaddjecency();
         System.out.println("");
